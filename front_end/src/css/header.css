@@ -1,0 +1,27 @@
+.header{
+    width: 100%;
+    background-color: rgb(54, 0, 141);
+    display: flex;
+	overflow: hidden;
+	height: 70px;
+	font-weight: 300;
+    text-transform: uppercase;
+    justify-content: space-around;
+	align-items: center;
+}
+
+.header a {
+	display: flex;
+  	float: left;
+  	color: #f2f2f2;
+  	text-align: center;
+  	padding: 14px 16px;
+  	text-decoration: none;
+  	font-size: 17px;
+
+}
+
+.header a:hover {
+    background-color: rgb(255, 255, 255);
+     color: black;
+}
