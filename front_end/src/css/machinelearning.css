@@ -1,0 +1,81 @@
+.inputfile {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;}
+
+.inputfile + label {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    font-size: 18px;
+    color: white;
+    width: 120px;
+    height: 100%;
+    background-color: #1890ff;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.load_file_input{
+    display: flex;
+    height: 30px;
+}
+
+.file_name_input{
+    display: flex;
+    font-size: 15px;
+    background-color: rgb(253, 253, 253);
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.212);
+    border-width: 1px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_machine{
+    width: 100%;
+    display: flex;
+}
+
+.range_machine{
+    margin-left: 100px;
+}
+
+.table_machine{
+    width: 95%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.status_machine{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    
+}
+
+.process_text_machine{
+    font-size: 15px;
+    display: flex;
+    text-align: left;
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.button_machine{
+    margin-bottom: 40px;
+}
+
+.download_button{
+    color: white;
+}
