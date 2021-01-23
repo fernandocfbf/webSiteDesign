@@ -1,25 +1,106 @@
-.pg_home{
-	width: 100%;
-	background-color: rgb(250, 250, 250);
-}
-
-.carousel_home{
-    height: 160px;
-    color: #fff;
-    line-height: 160px;
-    text-align: center;
-    background: #364d79
-}
-
-.carousel_all{
+.pagina_home{
     width: 100%;
-    height: 160px;
+    background-color: #ffffff;
 }
-    
+
+.menu_item_home{
+    margin-left: 40px;
+    font-size: 16px;
+}
+
+#menu_home ul {
+    padding:0px;
+    margin:0px;
+	list-style:none;
+}
+
+#menu_home ul li { display: inline; }
+
+#menu_home ul li a {
+    padding: 2px 10px;
+    display: inline-block;
+
+    /* visual do link */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+#menu_home ul li a:hover {
+    border-bottom:2px solid #ffffff;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.title_header{
+    color: white;
+    position: absolute;
+    font-size: 40px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.text_header{
+    color: white;
+    position: absolute;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button_header {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    height: 50px;
+    transform: translate(-50%, -50%);
+	box-shadow: 0px 10px 14px -7px #732727;
+	background:linear-gradient(to bottom, #7256a8 5%, #bd269a 100%);
+	background-color:#7256a8;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #dd00ff;
+    border: none;
+}
+.button_header:hover {
+	background:linear-gradient(to bottom, #bd269a 5%, #7256a8 100%);
+	background-color:#bd269a;
+}
+.button_header:active {
+	position:relative;
+	top:1px;
+}
+
+.myHeaderPosition {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-content: space-around;
+    width: 60%;
+    right: 20px;
+    top: 8px;
+}
+
 .site-card-wrapper {
     padding: 30px;
-    height: 350px;
     margin-bottom: 40px;
+}
+
+.card_home{
+	height: 300px;
 }
 
 .icon_home{
@@ -27,119 +108,27 @@
 	height: 100px;
 }
 
-.counter_home{
+.subtitle_card{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.sessao_1{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.session_1_background{
     position: relative;
     text-align: center;
-    color: white;
 }
 
-.text_step1{
-    width: 500px;
-    position: absolute;
-    color: white;
-    bottom: 80px;
-    left: 16px;
+
+.text_sessao_1{
+    color: rgb(43, 43, 43);
+    font-size: 15px;
 }
-
-.card_home{
-	height: 300px;
-}
-
-.tools_home{
-    display: grid;
-	grid-template-rows: 760px;
-	grid-template-columns: 40% 40%;
-	text-align: center;
-	justify-content: center;
-    column-gap: 40px;
-}
-
-.tools_image_home{
-    grid-row: 1 / 1;
-	grid-column: 1 / 1;
-	width: 100%;
-	height: 300px;
-}
-
-.web{
-	display: grid;
-	grid-row: 1 / 1;
-	grid-column: 1 / 1;
-	grid-template-rows: 300px 50px 300px;
-	grid-template-columns: 1fr;
-	text-align: center;
-	justify-content: center;
-	background-color: white;
-	margin-bottom: 20px;
-	margin-top: 20px;
-	opacity: 0.75;
-}
-
-.web:hover{
-	opacity: 1;
-}
-
-.ai{
-	display: grid;
-	grid-row: 1 / 1;
-	grid-column: 2 / 2;
-	grid-template-rows: 300px 50px 300px;
-	grid-template-columns: 1fr;
-	text-align: center;
-	justify-content: center;
-	background-color: white;
-	margin-bottom: 20px;
-	margin-top: 20px;
-	opacity: 0.75
-
-}
-
-.ai:hover {opacity: 1}
-
-.text_block1_title{
-	grid-row: 2 / 2;
-	grid-column: 1 / 1;
-	color: black;
-	width: 100%;
-	height: 100%;
-	font-size: 30px;
-	font-weight: 300;
-	text-transform: uppercase;
-
-}
-
-.text_block1_text{
-	grid-row: 3 / 3;
-	grid-column: 1 / 1;
-	width: 70%;
-	height: 100%;
-	font-size: 18px;
-	color: rgb(0, 0, 0);
-	text-align: justify;
-	justify-self: center;
-	margin-top: 30px;
-}
-
-.text_block2_title{
-	grid-row: 2 / 2;
-	grid-column: 1 / 1;
-	width: 100%;
-	height: 100%;
-	font-size: 30px;
-	color: rgb(0, 0, 0);
-	font-weight: 300;
-	text-transform: uppercase;
-	color: black;
-}
-
-.text_block2_text{
-	grid-row: 3 / 3;
-	grid-column: 1 / 1;
-	width: 70%;
-	font-size: 18px;
-	color: rgb(0, 0, 0);
-	text-align: justify;
-	justify-self: center;
-	margin-top: 30px;
-}
-

@@ -14,11 +14,11 @@ export default class Header extends Component {
             path: ''
         }
 
-        this.redirect = this.redirect.bind(this) 
+        this.redirect = this.redirect.bind(this)
     }
 
-    redirect(path){
-        this.setState({path: path})
+    redirect(path) {
+        this.setState({ path: path })
     }
 
     render() {
@@ -36,10 +36,14 @@ export default class Header extends Component {
 
         return (
             <div className="header">
-                <a href={url + "/home"}>Home</a>
-                <a href={url + "/machinelearning"}>Articial Intelligence</a>
-                <a>Web Scraping</a>
-                <a>Get Start</a>
+                <nav id="menu">
+                    <ul>
+                        <li className="menu_item"><a href={url + '/home'} className="header_button">Home</a></li>
+                        <li className="menu_item"><a href={url + '/machinelearning'} className="header_button">Artificial Intelligence</a></li>
+                        <li className="menu_item"><a className="header_button">Web Scraping</a></li>
+                        <li className="menu_item"><a className="header_button">About</a></li>
+                    </ul>
+                </nav>
             </div>
         )
     }

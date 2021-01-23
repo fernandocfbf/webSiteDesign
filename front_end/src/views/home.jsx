@@ -1,26 +1,15 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 import { Carousel, Divider, Card, Col, Row, Typography, Button } from 'antd';
-import { SettingFilled, DotChartOutlined, SmileOutlined } from '@ant-design/icons'
-
-
 import '../css/home.css'
-import 'antd/dist/antd.css';
 
-import Header from '../html/header'
-import Footer from '../html/footer'
-
-import step2 from '../img/step2.jpeg'
-import step3 from '../img/step3.jpg'
-
-import ai from '../img/ai.png'
-import web from '../img/web.png'
-
+import background from '../img/background.jpg'
 import vel from '../img/vel.png'
 import precision from '../img/precision.png'
 import user from '../img/user.png'
+import session_1_background from "../img/background_session_1.jpg";
 
-import tools from '../img/tools.png'
+import Header from '../html/header'
 
 export default class Home extends Component {
     constructor(props) {
@@ -28,17 +17,34 @@ export default class Home extends Component {
         super(props)
 
         this.state = {
-
+            path: ''
         }
+
+        this.redirect = this.redirect.bind(this)
+
+    }
+
+    redirect(path) {
+        this.setState({ path: path })
     }
 
     render() {
 
-        const { Title, Paragraph, Text, Link } = Typography;
+        if (this.state.path != '') {
+            return (
+                <Redirect to={{
+                    pathname: this.state.path,
+                }} />
+            )
+        }
+
+        //009302
+
+        const url = window.location.origin
 
         const contentStyle = {
             width: "100%",
-            height: "590px",
+            height: "65vh",
             color: 'white',
             objectFit: "cover",
             objectPosition: "50% 50%",
@@ -46,117 +52,87 @@ export default class Home extends Component {
             textAlign: 'center',
             background: 'black',
         }
-
         return (
-            <div className="pg_home" >
-                <Header></Header>
-                <Carousel autoplay>
-                    <div className='counter_home'>
-
-                        <img src={step3} style={contentStyle}></img>
-                        <h1 className="text_step1">
-                            
-                        </h1>
-                    </div>
-                    <div>
-                    <img src={step2} style={contentStyle}></img>
-                    </div>
-                    <div>
-                    <h3 style={contentStyle}>3</h3>
-                    </div>
-                    <div>
-                        <h3 style={contentStyle}>4</h3>
-                    </div>
-                </Carousel>
-
-                <Divider plain
-                    style={{
-                        fontSize: '20px',
-                        marginTop: '40px'
-                    }}>
-                    About
-                </Divider>
-
-                <Paragraph style={{
-                    color: 'black',
-                    marginBottom: "40px"
-                }}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                    nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                    distinctio! Nisi.
-                </Paragraph>
-
-                <div className="site-card-wrapper">
-                    <Row gutter={16}>
-                        <Col span={8}>
-                            <Card className="card_home" title={<img src={vel} className="icon_home" />} bordered={false}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                                nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                                distinctio! Nisi.
-                            </Card>
-                        </Col>
-                        <Col span={8}>
-                            <Card className="card_home" title={<img src={precision} className="icon_home" />} bordered={false}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                                nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                                distinctio! Nisi.
-                            </Card>
-                        </Col>
-                        <Col span={8}>
-                            <Card className="card_home" title={<img src={user} className="icon_home" />} bordered={false}>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                                nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                                distinctio! Nisi.
-                            </Card>
-                        </Col>
-                    </Row>
-                </div>
-
-                <Divider plain
-                    style={{
-                        fontSize: '20px',
-                        marginTop: '20px'
-                    }}>
-                    Tools
-                    </Divider>
-
-                <div className="tools_home">
-                    <a>
-                        <div className="web">
-                            <img className="tools_image_home" src={web} />
-                            <Text className="text_block1_title">WEB SCRAPING</Text>
-                            <Paragraph class="text_block1_text">
-                                ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur.
-                        </Paragraph>
+            <div className="pagina_home">
+                <div className="container">
+                    <Carousel autoplay>
+                        <div>
+                            <img src={background} style={contentStyle}></img>
+                            <h1 className="title_header">Hi. This is Automation</h1>
+                            <p className="text_header">Get start using our tools. We are providing a ominichannel solution. Hope you enjoy it.</p>
+                            <button className="button_header">Get Start</button>
                         </div>
-                    </a>
-
-                    <a>
-                        <div className="ai">
-                            <img className="tools_image_home" src={ai} />
-                            <Text className="text_block2_title">MACHINE LEARNING</Text>
-                            <Paragraph className="text_block2_text">
-                                ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur.
-                        </Paragraph>
-                        </div>
-                    </a>
+                    </Carousel>
+                    <div className="myHeaderPosition">
+                        <nav id="menu_home">
+                            <ul>
+                                <li className="menu_item_home"><a href={url + '/home'}>Home</a></li>
+                                <li className="menu_item_home"><a href={url + '/machinelearning'}>Artificial Intelligence</a></li>
+                                <li className="menu_item_home"><a>Web Scraping</a></li>
+                                <li className="menu_item_home"><a>About</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
+                <div className="session_1_background">
+                    <img src={session_1_background} style={contentStyle}></img>
+
+                    <div className="sessao_1">
+                        <h3 className="title_sessao_1">
+                            Something will apper here
+                        </h3>
+                        <p className="text_sessao_1">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            Nisi voluptates fuga, quidem asperiores nulla.
+                        </p>
 
 
+                        <div className="site-card-wrapper">
+                            <Row gutter={16}>
+                                <Col span={8}>
+                                    <Card className="card_home" title={
+                                        <div>
+                                            <img src={vel} className="icon_home" />
+                                            <h3 className="subtitle_card">Lorem Ipsum Lodp</h3>
+                                        </div>
 
-                <Footer></Footer>
+                                    } bordered={true}>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
+                                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
+                                        distinctio! Nisi.
+                            </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card className="card_home" title={
+                                        <div>
+                                            <img src={precision} className="icon_home" />
+                                            <h3 className="subtitle_card">Lorem Ipsum Lodp</h3>
+                                        </div>
+                                    } bordered={true}>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
+                                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
+                                        distinctio! Nisi.
+                            </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card className="card_home" title={
+                                        <div>
+                                            <img src={user} className="icon_home" />
+                                            <h3 className="subtitle_card">Lorem Ipsum Lodp</h3>
+                                        </div>
+                                    } bordered={true}>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
+                                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
+                                        distinctio! Nisi.
+                            </Card>
+                                </Col>
+                            </Row>
+                        </div>
+                    </div>
+                </div>
             </div >
         )
     }
