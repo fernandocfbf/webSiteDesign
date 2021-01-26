@@ -1,0 +1,35 @@
+.checkboxes{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+
+
+.site_title_web{
+    margin-right: 15px;
+    font-size: 15px;
+    color: black;
+}
+
+.table_web{
+    width: 95%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.button_web{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #30369f;
+    color: white;
+    outline:none;
+}
+
+.button_web:hover{
+    background-color: #ed0080
+}

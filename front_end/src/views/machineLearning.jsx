@@ -260,7 +260,7 @@ export default class MachineLearning extends Component {
         } else { range = false }
 
         return (
-            <div>
+            <div className="pg_machine">
                 <Header></Header>
 
                 <div className="status_machine">

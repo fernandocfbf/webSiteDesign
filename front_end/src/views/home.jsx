@@ -36,8 +36,6 @@ export default class Home extends Component {
             )
         }
 
-        //009302
-
         const url = window.location.origin
 
         const contentStyle = {
