@@ -9,8 +9,6 @@ import precision from '../img/precision.png'
 import user from '../img/user.png'
 import session_1_background from "../img/background_session_1.jpg";
 
-import Header from '../html/header'
-
 export default class Home extends Component {
     constructor(props) {
 
@@ -59,7 +57,7 @@ export default class Home extends Component {
                         <div>
                             <img src={background} style={contentStyle}></img>
                             <h1 className="title_header">Hi. This is Automation</h1>
-                            <p className="text_header">Get start using our tools. We are providing a ominichannel solution. Hope you enjoy it.</p>
+                            <p className="text_header">We are providing automation through the most trend tech in the market. Hope you enjoy it.</p>
                             <button className="button_header">Get Start</button>
                         </div>
                     </Carousel>
@@ -68,7 +66,7 @@ export default class Home extends Component {
                             <ul>
                                 <li className="menu_item_home"><a href={url + '/home'}>Home</a></li>
                                 <li className="menu_item_home"><a href={url + '/machinelearning'}>Artificial Intelligence</a></li>
-                                <li className="menu_item_home"><a>Web Scraping</a></li>
+                                <li className="menu_item_home"><a href={url + '/webscraping'}>Web Scraping</a></li>
                                 <li className="menu_item_home"><a>About</a></li>
                             </ul>
                         </nav>
@@ -93,40 +91,37 @@ export default class Home extends Component {
                                     <Card className="card_home" title={
                                         <div>
                                             <img src={vel} className="icon_home" />
-                                            <h3 className="subtitle_card">Lorem Ipsum Lodp</h3>
+                                            <h3 className="subtitle_card">Processing speed</h3>
                                         </div>
 
                                     } bordered={true}>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                                        distinctio! Nisi.
+                                        This aplicattion was built using Node.js technology. One of the most trend 
+                                        architectures in the market, providing velocity through a asynchronous 
+                                        programming language. 
+
                             </Card>
                                 </Col>
                                 <Col span={8}>
                                     <Card className="card_home" title={
                                         <div>
                                             <img src={precision} className="icon_home" />
-                                            <h3 className="subtitle_card">Lorem Ipsum Lodp</h3>
+                                            <h3 className="subtitle_card">High Precision Algorithm</h3>
                                         </div>
                                     } bordered={true}>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                                        distinctio! Nisi.
+                                        The artificial intelligence is based on the Support Vector Machine algorithm (SVM), 
+                                        and its architecture provides 97% accuracy.
                             </Card>
                                 </Col>
                                 <Col span={8}>
                                     <Card className="card_home" title={
                                         <div>
                                             <img src={user} className="icon_home" />
-                                            <h3 className="subtitle_card">Lorem Ipsum Lodp</h3>
+                                            <h3 className="subtitle_card">User-friendly</h3>
                                         </div>
                                     } bordered={true}>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                                        distinctio! Nisi.
+                                        The website provides a ominichannel solution, designed for people who code or not. 
+                                        If you aren't familiar with the technologies used here,
+                                        don't worry, you can click in the "get start" button. 
                             </Card>
                                 </Col>
                             </Row>

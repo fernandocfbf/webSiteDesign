@@ -14,18 +14,26 @@
     align-items: center; 
     justify-content: center; 
     text-align: center; 
-    font-size: 18px;
+    font-size: 17px;
     color: white;
     width: 120px;
     height: 100%;
-    background-color: #1890ff;
+    background-color: #30369f;
     border-radius: 2px;
     display: inline-block;
+}
+
+.inputfile+label:hover{
+    background-color: #ed0080
 }
 
 .load_file_input{
     display: flex;
     height: 30px;
+}
+
+.icon_input{
+    margin-left: 5px;
 }
 
 .file_name_input{
@@ -72,10 +80,21 @@
     margin-top: 40px;
 }
 
-.button_machine{
-    margin-bottom: 40px;
+.machine_footer_table{
+    display: flex;
+    justify-content: center;
 }
 
-.download_button{
+.button_machine{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #30369f;
     color: white;
+    outline:none;
+}
+
+.button_machine:hover{
+    background-color: #ed0080
 }

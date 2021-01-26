@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import MachineLearning from './views/machineLearning'
+import WebScraping from './views/webScraping'
 import Home from './views/home'
 
 // A tag de Redirect irá redirecionar qualquer chamada que não foi
@@ -10,6 +11,7 @@ const Routes = () => (
         <Switch>
             <Route path="/home" component={Home}></Route>
             <Route exact path="/machinelearning" component={MachineLearning}></Route>
+            <Route exact path="/webscraping" component={WebScraping}></Route>
             <Redirect to='home'></Redirect>
         </Switch>
     </Router>

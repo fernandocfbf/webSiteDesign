@@ -11,6 +11,8 @@ import Footer from '../html/footer'
 import * as XLSX from 'xlsx';
 import { CSVLink } from "react-csv";
 
+import ProgressBar from "../components/progress-bar.component";
+
 var functionresumeImport = require("../functions/resumeImport")
 var functionprocessDate = require("../functions/processDate")
 var functiontoDate = require("../functions/toDate")
@@ -25,6 +27,8 @@ export default class MachineLearning extends Component {
             file_name: '',
             data_classificados: [],
             loading: false,
+            loading_icon: false,
+            complete: "0",
             step1: "wait",
             step2: "wait",
             step3: "wait",
@@ -40,7 +44,7 @@ export default class MachineLearning extends Component {
     async readExcel(file) {
 
         try {
-            await this.setState({ file_name: file.name, loading: true })
+            await this.setState({ file_name: file.name, loading: true, loading_icon: true })
 
             const promise = new Promise((resolve, reject) => {
 
@@ -66,7 +70,7 @@ export default class MachineLearning extends Component {
 
                         resolve(data)
                     } catch {
-                        this.setState({ loading: "crash" })
+                        this.setState({ loading: "crash", loading_icon: "crash" })
                         message.error("Extensão inválida!")
                     }
 
@@ -80,14 +84,14 @@ export default class MachineLearning extends Component {
             promise.then((d) => {
                 if (d[0]['Data'] == undefined && d[0]["HTML"] == undefined) {
 
-                    this.setState({ loading: "crash", data: [], data_filter: [] })
+                    this.setState({ loading: "crash",loading_icon: "crash", data: [], data_filter: [] })
                     message.error("Conteúdo inválido!")
 
                 } else {
 
                     var d_filtered = functionresumeImport(d)
 
-                    this.setState({ data: d, data_filter: d_filtered, loading: "done", step1: "finish" })
+                    this.setState({ data: d, data_filter: d_filtered, loading: "done",loading_icon:"done" , step1: "finish" })
                     message.success("Arquivo importado com sucesso!")
                 }
 
@@ -139,7 +143,7 @@ export default class MachineLearning extends Component {
     //função resposável por executar o algorítimo de machine learning
     async processar() {
 
-        this.setState({ loading: true })
+        this.setState({ loading_icon: true })
 
         var data_to_send = []
 
@@ -152,19 +156,18 @@ export default class MachineLearning extends Component {
 
         for (var i = 0; i < data_to_send.length / 40; i++) {
 
-            console.log("rodada: ", i, " || ", data_to_send.length / 40)
+            await this.setState({ loading_icon: true })
 
-            await this.setState({ loading: true })
+            this.setState({ complete: parseFloat((i)/(data_to_send.length/40))*100 })
+
+
 
             await axios.post('http://localhost:3000/machineLearning', { manchetes: data_to_send.slice(inicio, fim) })
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
-                        console.log("DATA: ", typeof resp.data, resp.data)
-                        console.log(eval('(' + resp.data + ')'))
-
                         if (resp.data != false) {
                             var new_data = this.state.data_classificados.concat(eval('(' + resp.data + ')'))
-                            this.setState({ loading: false, data_classificados: new_data })
+                            this.setState({ loading_icon: false, data_classificados: new_data })
                         }
                     }
                 }).catch((err) => {
@@ -175,9 +178,11 @@ export default class MachineLearning extends Component {
             fim += 40
         }
 
+        this.setState({ complete: parseFloat(100) })
+
         if (this.state.data_classificados.length == 0) {
             message.info("Nenhuma manchete relevante encontrada!")
-            this.setState({ step2: "finish", step3: "finish", loading: false})
+            this.setState({ step2: "finish", step3: "finish", loading_icon: false })
         } else {
             this.setState({ step2: "finish" })
         }
@@ -195,12 +200,24 @@ export default class MachineLearning extends Component {
         const { RangePicker } = DatePicker;
         const { Step } = Steps;
 
-        if (this.state.data_classificados.length == 0) {
+        if (this.state.data.length == 0) {
+            var disabled_process = true
+        } else { disabled_process = false }
+
+        console.log(disabled_process)
+
+        if (parseFloat(this.state.complete) < 100) {
             var disabled = true
         } else { disabled = false }
 
-        console.log(this.state)
+        if (disabled != true) {
+            var style_download = { backgroundColor: "#30369f", color: "white", border: "none", marginBottom: "30px" }
+        } else {
+            style_download = { color: "gray", border: "none", marginBottom: "30px" }
+        }
 
+        const progress = { bgcolor: "#30369f", completed: parseFloat(this.state.complete).toFixed(2) }
+        
 
         var col = [
             {
@@ -222,11 +239,11 @@ export default class MachineLearning extends Component {
         ]
 
         //cria o ícone do arquivo de acordo com o status
-        if (this.state.loading == true) {
+        if (this.state.loading_icon == true) {
             var file_status = (
                 <LoadingOutlined className="icon_input" />
             )
-        } else if (this.state.loading == "done") {
+        } else if (this.state.loading_icon == "done") {
 
             var file_status = (
                 <CheckCircleTwoTone className="icon_input" twoToneColor="#52c41a" />
@@ -287,39 +304,45 @@ export default class MachineLearning extends Component {
                                 onChange={this.filtroData}
                             />
                         </div>
+                    }
+
+                    footer={() =>
+                        <div className="machine_footer_table">
+                            <button
+                                className="button_machine"
+                                onClick={this.processar}
+                                disabled={disabled_process}>
+                                Processar
+                            </button>
+
+                            <ProgressBar
+                                className="progressBar"
+                                bgcolor={progress.bgcolor} completed={progress.completed} />
+                        </div>
                     }>
 
-                </Table>
+                </Table >
 
                 <Divider orientation="left" plain>
-                    Processamento
+                    Download de informações
                 </Divider>
 
                 <div className="process_text_machine">
                     <Paragraph >
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Commodi voluptatem libero aut molestias beatae iste.
-                        Maxime enim sequi, laborum, fugiat veritatis libero, inventore amet necessitatibus aliquid
-                        velit natus vero aut!
+                        Após importar o arquivo e clicar no botão de processar, os dados serão lidos por um algorítimo
+                        e classificados, basta esperar o final da operação e clicar no botão abaixo para extrair os dados
+                        no formato de um arquivo CSV.
                     </Paragraph>
                 </div>
 
                 <Button
                     type="primary"
-                    className="button_machine"
-                    onClick={this.processar}>
-                    Processar
-                </Button>
-
-                <Button
-                    type="primary"
-                    className='download_button'
-                    style={{marginLeft: "30px"}}
+                    style={style_download}
                     icon={<DownloadOutlined />}
                     disabled={disabled}
                     onClick={this.download}>
                     <CSVLink
-                        className='download_button'
+                        style={style_download}
                         filename={"manchetes_classificadas.csv"}
                         data={this.state.data_classificados}>
                         Download
@@ -327,7 +350,7 @@ export default class MachineLearning extends Component {
                 </Button>
 
                 <Footer></Footer>
-            </div>
+            </div >
         )
     }
 }

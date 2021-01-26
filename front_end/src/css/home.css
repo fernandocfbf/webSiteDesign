@@ -74,6 +74,7 @@
 	text-decoration:none;
     text-shadow:0px 1px 0px #dd00ff;
     border: none;
+    outline: none;
 }
 .button_header:hover {
 	background:linear-gradient(to bottom, #bd269a 5%, #7256a8 100%);

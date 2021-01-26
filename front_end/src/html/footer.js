@@ -27,10 +27,6 @@ export default class Footer extends Component {
 
         return (
             <div className="footer">
-                <Text className="autor">
-                    Designed and produced by Fernando Fincatti
-                </Text>
-
                 <div className="footer_grid">
                     <Text className="aboutUs">About us</Text>
 
