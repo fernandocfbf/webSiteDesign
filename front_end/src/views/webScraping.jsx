@@ -13,29 +13,66 @@ export default class WebScraping extends Component {
         super(props)
 
         this.state = {
-            social: false,
-            instiglio: false,
+            social: true,
+            instiglio: true,
             golab: false,
-            sector: false
-
+            sector: false,
+            social_data: [],
+            instiglio_data: [],
         }
-    }
 
-    
+        this.changeCheckSocial = this.changeCheckSocial.bind(this)
+        this.changeCheckInstiglio = this.changeCheckInstiglio.bind(this)
+        this.processar = this.processar.bind(this)
+    }
 
     processar() {
 
-        axios.get('http://localhost:3000/webScraping_social')
-            .then(resp => {
-                if (Math.floor(resp.status / 100) === 2) {
-                    if (resp.data != false) {
-                        console.log("rodou: ", resp.data)
+        if (this.state.social) {
+            axios.get('http://localhost:3000/webScraping_social')
+                .then(resp => {
+                    if (Math.floor(resp.status / 100) === 2) {
+                        if (resp.data != false) {
+                            const lista = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
+                            if (lista.length > 2) {
+                                const lista_social = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                this.setState({ social_data: lista_social })
+                            }
+                        }
                     }
-                }
-            }).catch((err) => {
-                console.log(err)
-            })
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
+        if (this.state.instiglio) {
+            console.log("Faz o get")
+            axios.get('http://localhost:3000/webScraping_instiglio')
+                .then(resp => {
+                    if (Math.floor(resp.status / 100) === 2) {
+                        if (resp.data != false) {
+                            const lista = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
+                            if (lista.length > 2) {
+                                const lista_social = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                this.setState({ instiglio_data: lista_social })
+                            }
+                        }
+                    }
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
     }
+
+    changeCheckSocial(event) {
+        this.setState({ social: event.target.checked })
+    }
+
+    changeCheckInstiglio(event) {
+        this.setState({ instiglio: event.target.checked })
+    }
+
 
     render() {
 
@@ -43,6 +80,7 @@ export default class WebScraping extends Component {
 
         const data = []
 
+        console.log(this.state)
 
         return (
             <div className="pg_webScraping">
@@ -56,12 +94,12 @@ export default class WebScraping extends Component {
                         <div className='checkboxes'>
                             <div>
                                 <label className="site_title_web">Social Finance</label>
-                                <Checkbox defaultChecked />
+                                <Checkbox defaultChecked onChange={this.changeCheckSocial} />
                             </div>
 
                             <div>
                                 <label className="site_title_web">Instiglio</label>
-                                <Checkbox defaultChecked />
+                                <Checkbox defaultChecked onChange={this.changeCheckInstiglio} />
                             </div>
 
                             <div>

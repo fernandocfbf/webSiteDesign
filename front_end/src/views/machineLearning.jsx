@@ -160,8 +160,6 @@ export default class MachineLearning extends Component {
 
             this.setState({ complete: parseFloat((i)/(data_to_send.length/40))*100 })
 
-
-
             await axios.post('http://localhost:3000/machineLearning', { manchetes: data_to_send.slice(inicio, fim) })
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
@@ -178,7 +176,7 @@ export default class MachineLearning extends Component {
             fim += 40
         }
 
-        this.setState({ complete: parseFloat(100) })
+        this.setState({ complete: parseFloat(100), loading_icon: false })
 
         if (this.state.data_classificados.length == 0) {
             message.info("Nenhuma manchete relevante encontrada!")
