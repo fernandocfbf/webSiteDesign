@@ -3,32 +3,6 @@
     background-color: #ffffff;
 }
 
-.menu_item_home{
-    margin-left: 40px;
-    font-size: 16px;
-}
-
-#menu_home ul {
-    padding:0px;
-    margin:0px;
-	list-style:none;
-}
-
-#menu_home ul li { display: inline; }
-
-#menu_home ul li a {
-    padding: 2px 10px;
-    display: inline-block;
-
-    /* visual do link */
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-
-#menu_home ul li a:hover {
-    border-bottom:2px solid #ffffff;
-}
-
 .container {
     position: relative;
     text-align: center;
@@ -83,16 +57,6 @@
 .button_header:active {
 	position:relative;
 	top:1px;
-}
-
-.myHeaderPosition {
-    position: absolute;
-    display: flex;
-    justify-content: flex-end;
-    align-content: space-around;
-    width: 60%;
-    right: 20px;
-    top: 8px;
 }
 
 .site-card-wrapper {

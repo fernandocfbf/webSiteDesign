@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import { message, Divider, Table, Typography, Steps, Button, DatePicker } from 'antd';
+import { message, Divider, Table, Typography, Steps, Button, DatePicker, Carousel } from 'antd';
 import { LoadingOutlined, CheckCircleTwoTone, CloseCircleTwoTone, DownloadOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import '../css/machinelearning.css'
@@ -12,6 +12,7 @@ import * as XLSX from 'xlsx';
 import { CSVLink } from "react-csv";
 
 import ProgressBar from "../components/progress-bar.component";
+import background_machine from '../img/teste_machine.jpg'
 
 var functionresumeImport = require("../functions/resumeImport")
 var functionprocessDate = require("../functions/processDate")
@@ -84,14 +85,14 @@ export default class MachineLearning extends Component {
             promise.then((d) => {
                 if (d[0]['Data'] == undefined && d[0]["HTML"] == undefined) {
 
-                    this.setState({ loading: "crash",loading_icon: "crash", data: [], data_filter: [] })
+                    this.setState({ loading: "crash", loading_icon: "crash", data: [], data_filter: [] })
                     message.error("Conteúdo inválido!")
 
                 } else {
 
                     var d_filtered = functionresumeImport(d)
 
-                    this.setState({ data: d, data_filter: d_filtered, loading: "done",loading_icon:"done" , step1: "finish" })
+                    this.setState({ data: d, data_filter: d_filtered, loading: "done", loading_icon: "done", step1: "finish" })
                     message.success("Arquivo importado com sucesso!")
                 }
 
@@ -158,7 +159,7 @@ export default class MachineLearning extends Component {
 
             await this.setState({ loading_icon: true })
 
-            this.setState({ complete: parseFloat((i)/(data_to_send.length/40))*100 })
+            this.setState({ complete: parseFloat((i) / (data_to_send.length / 40)) * 100 })
 
             await axios.post('http://localhost:3000/machineLearning', { manchetes: data_to_send.slice(inicio, fim) })
                 .then(resp => {
@@ -202,7 +203,6 @@ export default class MachineLearning extends Component {
             var disabled_process = true
         } else { disabled_process = false }
 
-        console.log(disabled_process)
 
         if (parseFloat(this.state.complete) < 100) {
             var disabled = true
@@ -215,7 +215,7 @@ export default class MachineLearning extends Component {
         }
 
         const progress = { bgcolor: "#30369f", completed: parseFloat(this.state.complete).toFixed(2) }
-        
+
 
         var col = [
             {
@@ -235,6 +235,17 @@ export default class MachineLearning extends Component {
                 dataIndex: "Resumo_"
             },
         ]
+
+        const contentStyle = {
+            width: "100%",
+            height: "65vh",
+            color: 'white',
+            objectFit: "cover",
+            objectPosition: "50% 50%",
+            lineHeight: '160px',
+            textAlign: 'center',
+            background: 'black',
+        }
 
         //cria o ícone do arquivo de acordo com o status
         if (this.state.loading_icon == true) {
@@ -259,11 +270,27 @@ export default class MachineLearning extends Component {
 
         return (
             <div className="pg_machine">
-                <Header></Header>
+                <div className="container_machine">
+                    <Carousel autoplay>
+                        <div>
+                            <img src={background_machine} style={contentStyle}></img>
+                            <h1 className="title_header_machine">Machine Learning through SVM</h1>
+                            <div className="manchetes_segundo_machine">
+                                <h1 className="title_manchetes_segundo_machine">1.45</h1>
+                                <p className="text_manchetes_segundo_machine">headlines per second</p>
+                            </div>
+                            <div className="manchetes_precision_machine">
+                                <h1 className="title_manchetes_precision_machine">97.98%</h1>
+                                <p className="text_manchetes_precision_machine">algorithm precision</p>
+                            </div>
+
+                        </div>
+                    </Carousel>
+                    <Header></Header>
+                </div>
 
                 <div className="status_machine">
                     <Steps>
-
                         <Step status={this.state.step1} title="Importar arquivo" />
                         <Step status={this.state.step2} title="Processamento de dados" />
                         <Step status={this.state.step3} title="Download" />

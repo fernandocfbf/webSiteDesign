@@ -9,6 +9,9 @@ import precision from '../img/precision.png'
 import user from '../img/user.png'
 import session_1_background from "../img/background_session_1.jpg";
 
+import Header from '../html/header'
+import Footer from '../html/footer'
+
 export default class Home extends Component {
     constructor(props) {
 
@@ -48,6 +51,7 @@ export default class Home extends Component {
             textAlign: 'center',
             background: 'black',
         }
+
         return (
             <div className="pagina_home">
                 <div className="container">
@@ -59,16 +63,7 @@ export default class Home extends Component {
                             <button className="button_header">Get Start</button>
                         </div>
                     </Carousel>
-                    <div className="myHeaderPosition">
-                        <nav id="menu_home">
-                            <ul>
-                                <li className="menu_item_home"><a href={url + '/home'}>Home</a></li>
-                                <li className="menu_item_home"><a href={url + '/machinelearning'}>Artificial Intelligence</a></li>
-                                <li className="menu_item_home"><a href={url + '/webscraping'}>Web Scraping</a></li>
-                                <li className="menu_item_home"><a>About</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                    <Header></Header>
                 </div>
                 <div className="session_1_background">
                     <img src={session_1_background} style={contentStyle}></img>

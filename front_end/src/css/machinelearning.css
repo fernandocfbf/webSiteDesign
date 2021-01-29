@@ -1,3 +1,59 @@
+.container_machine {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.title_header_machine{
+    color: white;
+    position: absolute;
+    font-size: 40px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.title_manchetes_segundo_machine{
+    color: white;
+    position: absolute;
+    font-size: 35px;
+    top: 70%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+
+}
+
+.text_manchetes_segundo_machine{
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    top: 80%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+
+}
+
+.title_manchetes_precision_machine{
+    color: white;
+    position: absolute;
+    font-size: 35px;
+    top: 70%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+
+}
+
+.text_manchetes_precision_machine{
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    top: 80%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+
+}
+
 .inputfile {
     display: flex; 
     align-items: center; 
@@ -24,7 +80,7 @@
 }
 
 .inputfile+label:hover{
-    background-color: #ed0080
+    background-color: #c0016a
 }
 
 .load_file_input{
@@ -66,8 +122,8 @@
 .status_machine{
     margin: auto;
     width: 90%;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    margin-bottom: 70px;
+    margin-top: 70px;
     
 }
 
@@ -96,5 +152,5 @@
 }
 
 .button_machine:hover{
-    background-color: #ed0080
+    background-color: #c0016a
 }
