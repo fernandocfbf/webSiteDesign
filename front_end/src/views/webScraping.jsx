@@ -12,12 +12,9 @@ import golab from '../img/golab.jpg'
 
 import { CSVLink } from "react-csv";
 
-
 import '../css/webscraping.css'
-import { message, Table, Card, Col, Row, Carousel, Typography, Button } from 'antd';
+import { message, Table, Card, Col, Row, Carousel, Typography, Button, Switch } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
-
-
 
 export default class WebScraping extends Component {
     constructor(props) {
@@ -31,29 +28,31 @@ export default class WebScraping extends Component {
             social_data: [],
             instiglio_data: [],
             loading: false,
-            download_data: []
+            download_data: [],
+            reconhecer: false
         }
 
         this.changeCheckSocial = this.changeCheckSocial.bind(this)
         this.changeCheckInstiglio = this.changeCheckInstiglio.bind(this)
         this.processar = this.processar.bind(this)
+        this.reconhecer = this.reconhecer.bind(this)
     }
 
     async processar() {
 
-        this.setState({ loading: true })
+        this.setState({ loading: true, download_data: [] })
 
         var data_to_download = []
 
         if (this.state.social == "selected") {
-            await axios.get('http://localhost:3000/webScraping_social')
+            await axios.post('http://localhost:3000/webScraping_social', {reconhecer: this.state.reconhecer})
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
-                        this.setState({ loading_social: false })
                         if (resp.data != false) {
                             const lista = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
                             if (lista.length > 2) {
                                 const lista_social = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                this.setState({ social_data: lista_social })
                             }
                         }
                     }
@@ -63,14 +62,14 @@ export default class WebScraping extends Component {
         }
 
         if (this.state.instiglio == "selected") {
-            await axios.get('http://localhost:3000/webScraping_instiglio')
+            await axios.post('http://localhost:3000/webScraping_instiglio', {reconhecer: this.state.reconhecer})
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
                         if (resp.data != false) {
-                            const lista = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
-                            if (lista.length > 2) {
-                                const lista_social = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
-                                this.setState({ instiglio_data: lista_social })
+                            const lista_instiglio = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
+                            if (lista_instiglio.length > 2) {
+                                const lista_instiglio_final = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                this.setState({ instiglio_data: lista_instiglio_final })
                             }
                         }
                     }
@@ -79,8 +78,8 @@ export default class WebScraping extends Component {
                 })
         }
 
-        if(this.state.social_data.length > 0){
-            for(var i = 0; i<this.state.social_data.length; i++){
+        if (this.state.social_data.length > 0) {
+            for (var i = 0; i < this.state.social_data.length; i++) {
                 var json = {
                     "source": "Social Finance",
                     "link": this.state.social_data[i]
@@ -90,8 +89,8 @@ export default class WebScraping extends Component {
             }
         }
 
-        if(this.state.instiglio_data.length > 0){
-            for(var i = 0; i<this.state.instiglio_data.length; i++){
+        if (this.state.instiglio_data.length > 0) {
+            for (var i = 0; i < this.state.instiglio_data.length; i++) {
                 var json = {
                     "source": "Instiglio",
                     "link": this.state.instiglio_data[i]
@@ -101,8 +100,12 @@ export default class WebScraping extends Component {
             }
         }
 
-        this.setState({loading: false, download_data: data_to_download})
+        this.setState({ loading: false, download_data: data_to_download })
 
+    }
+
+    reconhecer(checked) {
+        this.setState({ reconhecer: checked })
     }
 
     changeCheckSocial() {
@@ -143,10 +146,10 @@ export default class WebScraping extends Component {
         const { Title, Paragraph, Text, Link } = Typography;
 
         if (this.state.download_data.length != 0) {
-            var style_download = { backgroundColor: "#30369f", color: "white", border: "none"}
+            var style_download = { backgroundColor: "#020061", color: "white", border: "none" }
             var download_disabled = false
         } else {
-            style_download = { color: "gray", border: "none"}
+            style_download = { color: "gray", border: "none" }
             download_disabled = true
         }
 
@@ -246,14 +249,19 @@ export default class WebScraping extends Component {
                     loading={this.state.loading}
                     dataSource={this.state.download_data}
 
-
                     title={() =>
                         <div className="title_web_table">
                             <button
                                 onClick={this.processar}
                                 className={search_class}
                                 disabled={search}>
-                                search</button>
+                                search
+                            </button>
+
+                            <div className="mongo_web">
+                                <p>Update the Mongo Atlas database</p>
+                                <Switch className="switch_web" onChange={this.reconhecer}></Switch>
+                            </div>
 
                         </div>
 

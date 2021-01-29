@@ -24,37 +24,10 @@ export default class Footer extends Component {
     render() {
 
         const { Title, Paragraph, Text, Link } = Typography;
+        const url = window.location.origin
 
         return (
-            <div className="footer">
-                <div className="footer_grid">
-                    <Text className="aboutUs">About us</Text>
-
-                    <Paragraph className="aboutUs_descricao">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Exercitationem ipsam dicta natus harum possimus magni vel ab,
-                        nihil voluptatem nulla commodi maiores, eligendi aspernatur cumque debitis explicabo rem
-                        distinctio! Nisi.
-                    </Paragraph>
-
-                    <Text className="contactUs"> Contact Us</Text>
-                    <div className="non_media1">
-                        <GoogleOutlined />
-                        <Paragraph className="text_footer">fincattifernando@gmail.com</Paragraph>
-                    </div>
-                    <div className="non_media2">
-                        <PhoneOutlined />
-                        <Paragraph className="text_footer">(11)96036-1402</Paragraph>
-                    </div>
-                </div>
-
-                <div className="media">
-                    <InstagramOutlined />
-                    <GithubOutlined />
-                    <FacebookOutlined />
-                    <LinkedinOutlined />
-                </div>
-
+            <div>
 
             </div>
         )

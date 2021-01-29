@@ -43,20 +43,6 @@
     margin-bottom: 40px;
 }
 
-.button_web{
-    width: 100px;
-    height: 30px;
-    border: none;
-    border-radius: 2px;
-    background-color: #30369f;
-    color: white;
-    outline:none;
-}
-
-.button_web:hover{
-    background-color: #ed0080
-}
-
 .site-card-wrapper_web {
     padding: 30px;
     margin-bottom: 40px;
@@ -100,6 +86,7 @@
 .title_web_table{
     display: flex;
     width: 100%;
+    justify-content: space-around;
 }
 
 .available_search_web{
@@ -117,4 +104,16 @@
     color: white;
     background-color: #bbbbbb;
 
+}
+
+.switch_web{
+    margin-left: 10px;
+}
+
+.mongo_web{
+    display: flex
+}
+
+.ant-switch-checked {
+    background-color: #020061;
 }

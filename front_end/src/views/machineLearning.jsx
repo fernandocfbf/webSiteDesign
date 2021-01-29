@@ -219,11 +219,11 @@ export default class MachineLearning extends Component {
 
         var col = [
             {
-                title: "Data",
+                title: "Date",
                 dataIndex: "Data"
             },
             {
-                title: "Remetente",
+                title: "Sender",
                 dataIndex: "De"
             },
             {
@@ -231,7 +231,7 @@ export default class MachineLearning extends Component {
                 dataIndex: "HTML_"
             },
             {
-                title: "Resumo",
+                title: "Resume",
                 dataIndex: "Resumo_"
             },
         ]
@@ -291,8 +291,8 @@ export default class MachineLearning extends Component {
 
                 <div className="status_machine">
                     <Steps>
-                        <Step status={this.state.step1} title="Importar arquivo" />
-                        <Step status={this.state.step2} title="Processamento de dados" />
+                        <Step status={this.state.step1} title="Import file" />
+                        <Step status={this.state.step2} title="Data processing" />
                         <Step status={this.state.step3} title="Download" />
                     </Steps>
                 </div>
@@ -314,7 +314,7 @@ export default class MachineLearning extends Component {
                                     const file = e.target.files[0]
                                     this.readExcel(file)
                                 }} />
-                                <label for="file">Carregar</label>
+                                <label for="file">Upload</label>
 
                                 <div className="file_name_input">
                                     <Text className="text_input"> {this.state.file_name} </Text>
@@ -337,7 +337,7 @@ export default class MachineLearning extends Component {
                                 className="button_machine"
                                 onClick={this.processar}
                                 disabled={disabled_process}>
-                                Processar
+                                Process
                             </button>
 
                             <ProgressBar
@@ -354,9 +354,9 @@ export default class MachineLearning extends Component {
 
                 <div className="process_text_machine">
                     <Paragraph >
-                        Após importar o arquivo e clicar no botão de processar, os dados serão lidos por um algorítimo
-                        e classificados, basta esperar o final da operação e clicar no botão abaixo para extrair os dados
-                        no formato de um arquivo CSV.
+                        Before import file and click in the process button, the data will be read by
+                        an algorithm an classified, you should just wait for the operation to end and then
+                        right click in the button bellow to export as a CSV file.
                     </Paragraph>
                 </div>
 

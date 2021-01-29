@@ -1,71 +1,51 @@
 .footer{
     width: 100%;
-    height: 240px;
-    background: rgb(50, 50, 51);
-}
-
-.autor{
-    color: white;
-}
-
-.footer_grid{
-    display: grid;
-	margin-top: 20px;
-	grid-template-rows: 50px 50px 100px;
-	grid-template-columns: 2fr 1fr;
-	column-gap: 100px;
-	justify-content: center;
-}
-
-
-.aboutUs{
-    color: white;
-    grid-row: 1 / 1;
-	grid-column: 1 / 1;
-}
-
-.aboutUs_descricao{
-    color: white;
-    font-size: 18px;
-    display: flex;
-    grid-row: 2 / 3;
-    grid-column: 1 / 1;
-    text-align: justify;
-    margin-left: 30px;
-
-}
-
-.contactUs{
-    color: white;
-    justify-self: start;
-    grid-row: 1 / 1;
-	grid-column: 2 / 2;
-}
-
-.non_media1{
-    display: flex;
-    grid-row: 2 / 2;
-	grid-column: 2 / 2;
-
-}
-
-.non_media2{
-    display: flex;
-    grid-row: 3 / 3;
-	grid-column: 2 / 2;
-
-}
-
-.text_footer{
-    color: white;
-    margin-left: 10px;
-    font-size: 15px;
+    height: 140px;
+    background: rgb(0, 0, 0);
+    justify-content: center;
 }
 
 .media{
-    width: 10%;
-    display: flex;
+    width: 20%;
+    display: inline-block;
     margin: auto;
+    margin-top: 20px;
     align-items: center;
-    justify-content: space-around;
+}
+
+.icon_footer{
+    font-size: 35px;
+    padding: 5px
+}
+
+.menu_item_footer{
+    margin-left: 40px;
+    font-size: 16px;
+}
+
+#menu_footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+#menu_footer ul {
+	list-style:none;
+}
+
+#menu_footer ul li { display: inline; }
+
+#menu_footer ul li a {
+    padding: 2px 10px;
+    display: inline-block;
+
+    /* visual do link */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+#menu_footer ul li a:hover {
+    border-bottom:2px solid #ffffff;
 }
