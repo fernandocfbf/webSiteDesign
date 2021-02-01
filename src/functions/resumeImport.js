@@ -15,4 +15,4 @@ function resumeImport(arrayJson){
     return cloned
 }
 
-module.exports = resumeImport
+export default resumeImport

@@ -32,4 +32,4 @@ function toDate(date) {
     
 }
 
-module.exports = toDate
+export default toDate

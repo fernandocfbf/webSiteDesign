@@ -14,9 +14,9 @@ import { CSVLink } from "react-csv";
 import ProgressBar from "../components/progress-bar.component";
 import background_machine from '../img/teste_machine.jpg'
 
-var functionresumeImport = require("../functions/resumeImport")
-var functionprocessDate = require("../functions/processDate")
-var functiontoDate = require("../functions/toDate")
+import functionresumeImport from "../functions/resumeImport"
+import functionprocessDate from "../functions/processDate"
+import functiontoDate from "../functions/toDate"
 
 export default class MachineLearning extends Component {
     constructor(props) {
