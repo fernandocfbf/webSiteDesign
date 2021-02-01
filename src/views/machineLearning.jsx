@@ -161,7 +161,7 @@ export default class MachineLearning extends Component {
 
             this.setState({ complete: parseFloat((i) / (data_to_send.length / 40)) * 100 })
 
-            await axios.post('http://localhost:3000/machineLearning', { manchetes: data_to_send.slice(inicio, fim) })
+            await axios.post('machineLearning', { manchetes: data_to_send.slice(inicio, fim) })
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
                         if (resp.data != false) {

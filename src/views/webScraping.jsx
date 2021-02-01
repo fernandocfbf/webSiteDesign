@@ -45,7 +45,7 @@ export default class WebScraping extends Component {
         var data_to_download = []
 
         if (this.state.social == "selected") {
-            await axios.post('http://localhost:3000/webScraping_social', {reconhecer: this.state.reconhecer})
+            await axios.post('webScraping_social', {reconhecer: this.state.reconhecer})
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
                         if (resp.data != false) {
@@ -62,7 +62,7 @@ export default class WebScraping extends Component {
         }
 
         if (this.state.instiglio == "selected") {
-            await axios.post('http://localhost:3000/webScraping_instiglio', {reconhecer: this.state.reconhecer})
+            await axios.post('webScraping_instiglio', {reconhecer: this.state.reconhecer})
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
                         if (resp.data != false) {
