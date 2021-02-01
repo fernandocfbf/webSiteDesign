@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from '../API/index'
 
 import { message, Divider, Table, Typography, Steps, Button, DatePicker, Carousel } from 'antd';
 import { LoadingOutlined, CheckCircleTwoTone, CloseCircleTwoTone, DownloadOutlined } from '@ant-design/icons';
