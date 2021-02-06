@@ -23,10 +23,12 @@ export default class WebScraping extends Component {
         this.state = {
             social: "selected",
             instiglio: "selected",
-            golab: false,
-            sector: false,
+            golab: "selected",
+            sector: "selected",
             social_data: [],
             instiglio_data: [],
+            sector_data: [],
+            golab_data: [],
             loading: false,
             download_data: [],
             reconhecer: false
@@ -34,6 +36,8 @@ export default class WebScraping extends Component {
 
         this.changeCheckSocial = this.changeCheckSocial.bind(this)
         this.changeCheckInstiglio = this.changeCheckInstiglio.bind(this)
+        this.changeCheckSector = this.changeCheckSector.bind(this)
+        this.changeCheckLab = this.changeCheckLab.bind(this)
         this.processar = this.processar.bind(this)
         this.reconhecer = this.reconhecer.bind(this)
     }
@@ -45,9 +49,10 @@ export default class WebScraping extends Component {
         var data_to_download = []
 
         if (this.state.social == "selected") {
-            await axios.post('webScraping_social', {reconhecer: this.state.reconhecer})
+            await axios.post('webScraping_social', { reconhecer: this.state.reconhecer })
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
+                        console.log("Social: ", resp.data)
                         if (resp.data != false) {
                             const lista = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
                             if (lista.length > 2) {
@@ -62,14 +67,53 @@ export default class WebScraping extends Component {
         }
 
         if (this.state.instiglio == "selected") {
-            await axios.post('webScraping_instiglio', {reconhecer: this.state.reconhecer})
+            await axios.post('webScraping_instiglio', { reconhecer: this.state.reconhecer })
                 .then(resp => {
                     if (Math.floor(resp.status / 100) === 2) {
+                        console.log("Instiglio: ", resp.data)
                         if (resp.data != false) {
                             const lista_instiglio = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
                             if (lista_instiglio.length > 2) {
                                 const lista_instiglio_final = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
                                 this.setState({ instiglio_data: lista_instiglio_final })
+                            }
+                        }
+                    }
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
+        if (this.state.sector == "selected") {
+            await axios.post('webScraping_sector', { reconhecer: this.state.reconhecer })
+                .then(resp => {
+                    if (Math.floor(resp.status / 100) === 2) {
+                        console.log("Sector: ", resp.data)
+                        if (resp.data != false) {
+                            const lista_sector = resp.data.replace("[", "").replace("]", "").replace(/ /g,'')
+                            if (lista_sector.length > 2) {
+                                const lista_sector_final = resp.data.replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                console.log(">>>>>", lista_sector_final)
+                                this.setState({ sector_data: lista_sector_final })
+                            }
+                        }
+                    }
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
+        if (this.state.golab == "selected") {
+            await axios.post('webScraping_lab', { reconhecer: this.state.reconhecer })
+                .then(resp => {
+                    if (Math.floor(resp.status / 100) === 2) {
+                        console.log("Go Lab: ", resp.data)
+                        if (resp.data != false) {
+                            const lista_lab = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
+                            if (lista_lab.length > 2) {
+                                const lista_lab_final = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                console.log(">>>>>>>", lista_lab_final)
+                                this.setState({ golab_data: lista_lab_final })
                             }
                         }
                     }
@@ -84,7 +128,6 @@ export default class WebScraping extends Component {
                     "source": "Social Finance",
                     "link": this.state.social_data[i]
                 }
-
                 data_to_download.push(json)
             }
         }
@@ -95,7 +138,26 @@ export default class WebScraping extends Component {
                     "source": "Instiglio",
                     "link": this.state.instiglio_data[i]
                 }
+                data_to_download.push(json)
+            }
+        }
 
+        if (this.state.sector_data.length > 0) {
+            for (var i = 0; i < this.state.sector_data.length; i++) {
+                var json = {
+                    "source": "Third Sector",
+                    "link": this.state.sector_data[i]
+                }
+                data_to_download.push(json)
+            }
+        }
+
+        if (this.state.golab_data.length > 0) {
+            for (var i = 0; i < this.state.golab_data.length; i++) {
+                var json = {
+                    "source": "Go Lab",
+                    "link": this.state.golab_data[i]
+                }
                 data_to_download.push(json)
             }
         }
@@ -116,7 +178,7 @@ export default class WebScraping extends Component {
         }
     }
 
-    changeCheckInstiglio(event) {
+    changeCheckInstiglio() {
         if (this.state.instiglio == "select") {
             this.setState({ instiglio: "selected" })
         } else {
@@ -124,9 +186,23 @@ export default class WebScraping extends Component {
         }
     }
 
-    render() {
+    changeCheckSector() {
+        if (this.state.sector == "select") {
+            this.setState({ sector: "selected" })
+        } else {
+            this.setState({ sector: "select" })
+        }
+    }
 
-        console.log(this.state)
+    changeCheckLab() {
+        if (this.state.sector == "select") {
+            this.setState({ golab: "selected" })
+        } else {
+            this.setState({ golab: "select" })
+        }
+    }
+
+    render() {
 
         if (this.state.social == "selected") { var social_class = "selected_class" }
         else { social_class = "select_web" }
@@ -134,13 +210,22 @@ export default class WebScraping extends Component {
         if (this.state.instiglio == "selected") { var instiglio_class = "selected_class" }
         else { instiglio_class = "select_web" }
 
-        if (this.state.instiglio == "select" && this.state.social == "select") {
+        if (this.state.sector == "selected") { var sector_class = "selected_class" }
+        else { sector_class = "select_web" }
+
+        if (this.state.golab == "selected") { var golab_class = "selected_class" }
+        else { golab_class = "select_web" }
+
+        if (this.state.instiglio == "select" &&
+            this.state.social == "select" &&
+            this.state.sector == "select" &&
+            this.state.golab == "select"
+          ) {
             var search = true
             var search_class = "unavailable_search_web"
         } else {
             search = false
             var search_class = "available_search_web"
-
         }
 
         const { Title, Paragraph, Text, Link } = Typography;
@@ -225,7 +310,7 @@ export default class WebScraping extends Component {
                                 "Our mission is to accelerate the transition
                                 to a performance-driven social sector."
                             </Card>
-                            <button disabled={true} className="select_unavailable_web">unavailable</button>
+                            <button disabled={this.state.loading} onClick={this.changeCheckSector} className={sector_class}>{this.state.sector}</button>
                         </Col>
                         <Col span={6}>
                             <Card className="card_web" title={
@@ -237,7 +322,7 @@ export default class WebScraping extends Component {
                                 designing and delivering new approaches to improve social
                                 outcomes."
                             </Card>
-                            <button disabled={true} className="select_unavailable_web">unavailable</button>
+                            <button disabled={this.state.loading} onClick={this.changeCheckLab} className={golab_class}>{this.state.golab}</button>
                         </Col>
                     </Row>
                 </div>
@@ -262,7 +347,6 @@ export default class WebScraping extends Component {
                                 <p>Update the Mongo Atlas database</p>
                                 <Switch className="switch_web" onChange={this.reconhecer}></Switch>
                             </div>
-
                         </div>
 
                     }
