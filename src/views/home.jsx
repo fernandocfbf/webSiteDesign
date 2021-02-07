@@ -60,7 +60,7 @@ export default class Home extends Component {
                             <img src={background} style={contentStyle}></img>
                             <h1 className="title_header">Hi. This is Automation</h1>
                             <p className="text_header">We are providing automation through the most trend tech in the market. Hope you enjoy it.</p>
-                            <button className="button_header">Get Start</button>
+                            <button disabled={true} className="button_header">Get Start</button>
                         </div>
                     </Carousel>
                     <Header></Header>
