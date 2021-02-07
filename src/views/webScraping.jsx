@@ -195,7 +195,7 @@ export default class WebScraping extends Component {
     }
 
     changeCheckLab() {
-        if (this.state.sector == "select") {
+        if (this.state.golab == "select") {
             this.setState({ golab: "selected" })
         } else {
             this.setState({ golab: "select" })

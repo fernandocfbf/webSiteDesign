@@ -276,7 +276,7 @@ export default class MachineLearning extends Component {
                             <img src={background_machine} style={contentStyle}></img>
                             <h1 className="title_header_machine">Machine Learning through SVM</h1>
                             <div className="manchetes_segundo_machine">
-                                <h1 className="title_manchetes_segundo_machine">1.45</h1>
+                                <h1 className="title_manchetes_segundo_machine">8.00</h1>
                                 <p className="text_manchetes_segundo_machine">headlines per second</p>
                             </div>
                             <div className="manchetes_precision_machine">
