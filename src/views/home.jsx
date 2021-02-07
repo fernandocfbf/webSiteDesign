@@ -70,11 +70,10 @@ export default class Home extends Component {
 
                     <div className="sessao_1">
                         <h3 className="title_sessao_1">
-                            Something will apper here
+                            About the automation tools
                         </h3>
                         <p className="text_sessao_1">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            Nisi voluptates fuga, quidem asperiores nulla.
+                            Bellow you will find a snippet of some of the main features of this web site
                         </p>
 
 
