@@ -53,7 +53,7 @@ export default class Home extends Component {
         }
 
         return (
-            <div className="pagina_home">
+            <div className="pagina_home" id="outer-container">
                 <div className="container">
                     <Carousel autoplay>
                         <div>
@@ -63,7 +63,7 @@ export default class Home extends Component {
                             <button disabled={true} className="button_header">Get Start</button>
                         </div>
                     </Carousel>
-                    <Header></Header>
+
                 </div>
                 <div className="session_1_background">
                     <img src={session_1_background} style={contentStyle}></img>
@@ -78,48 +78,45 @@ export default class Home extends Component {
 
 
                         <div className="site-card-wrapper">
-                            <Row gutter={16}>
-                                <Col span={8}>
-                                    <Card className="card_home" title={
-                                        <div>
-                                            <img src={vel} className="icon_home" />
-                                            <h3 className="subtitle_card">Processing speed</h3>
-                                        </div>
 
-                                    } bordered={true}>
-                                        This aplicattion was built using Node.js technology. One of the most trend 
-                                        architectures in the market, providing velocity through a asynchronous 
-                                        programming language. 
+                            <Card className="card_home" title={
+                                <div>
+                                    <img src={vel} className="icon_home" />
+                                    <h3 className="subtitle_card">Processing speed</h3>
+                                </div>
 
+                            } bordered={true}>
+                                This aplicattion was built using Node.js technology. One of the most trend
+                                architectures in the market, providing velocity through a asynchronous
+                                programming language.
+
+                                    </Card>
+
+                            <Card className="card_home" title={
+                                <div>
+                                    <img src={precision} className="icon_home" />
+                                    <h3 className="subtitle_card">High Precision Algorithm</h3>
+                                </div>
+                            } bordered={true}>
+                                The artificial intelligence is based on the Support Vector Machine algorithm (SVM),
+                                and its architecture provides 97% accuracy.
                             </Card>
-                                </Col>
-                                <Col span={8}>
-                                    <Card className="card_home" title={
-                                        <div>
-                                            <img src={precision} className="icon_home" />
-                                            <h3 className="subtitle_card">High Precision Algorithm</h3>
-                                        </div>
-                                    } bordered={true}>
-                                        The artificial intelligence is based on the Support Vector Machine algorithm (SVM), 
-                                        and its architecture provides 97% accuracy.
+
+
+                            <Card className="card_home" title={
+                                <div>
+                                    <img src={user} className="icon_home" />
+                                    <h3 className="subtitle_card">User-friendly</h3>
+                                </div>
+                            } bordered={true}>
+                                The website provides a ominichannel solution, designed for people who code or not.
+                                If you aren't familiar with the technologies used here,
+                                don't worry, you can click in the "get start" button.
                             </Card>
-                                </Col>
-                                <Col span={8}>
-                                    <Card className="card_home" title={
-                                        <div>
-                                            <img src={user} className="icon_home" />
-                                            <h3 className="subtitle_card">User-friendly</h3>
-                                        </div>
-                                    } bordered={true}>
-                                        The website provides a ominichannel solution, designed for people who code or not. 
-                                        If you aren't familiar with the technologies used here,
-                                        don't worry, you can click in the "get start" button. 
-                            </Card>
-                                </Col>
-                            </Row>
                         </div>
                     </div>
                 </div>
+                <Header></Header>
             </div >
         )
     }

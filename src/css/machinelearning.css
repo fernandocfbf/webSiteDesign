@@ -1,17 +1,12 @@
+.pg_machine{
+    width: 100%;
+}
+
+
 .container_machine {
     position: relative;
     text-align: center;
     color: white;
-}
-
-.title_header_machine{
-    color: white;
-    position: absolute;
-    font-size: 40px;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
 }
 
 .title_manchetes_segundo_machine{
@@ -21,7 +16,16 @@
     top: 70%;
     left: 40%;
     transform: translate(-50%, -50%);
+}
 
+.title_header_machine{
+    color: white;
+    position: absolute;
+    width: 80%;
+    font-size: 40px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .text_manchetes_segundo_machine{
@@ -107,6 +111,7 @@
 .title_machine{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .range_machine{
@@ -153,4 +158,73 @@
 
 .button_machine:hover{
     background-color: #c0016a
+}
+
+@media only screen and (max-width: 400px) {
+    
+    .table_machine{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .load_file_input{
+        width: 90%;
+        justify-content: center;
+    }
+
+    .range_machine{
+        margin-top: 20px;
+        margin-left: 0px
+    }
+
+    .title_header_machine{
+        color: white;
+        position: absolute;
+        width: 80%;
+        font-size: 35px;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .title_manchetes_segundo_machine{
+        color: white;
+        position: absolute;
+        font-size: 35px;
+        top: 70%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+    }
+
+    .text_manchetes_segundo_machine{
+        color: white;
+        position: absolute;
+        font-size: 18px;
+        width: 100px;
+        top: 80%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+    }
+
+    .title_manchetes_precision_machine{
+        color: white;
+        position: absolute;
+        font-size: 35px;
+        top: 70%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+    
+    }
+    
+    .text_manchetes_precision_machine{
+        color: white;
+        position: absolute;
+        font-size: 18px;
+        top: 80%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+    
+    }
+
 }

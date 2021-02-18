@@ -304,7 +304,8 @@ export default class MachineLearning extends Component {
                     pagination={false}
                     loading={this.state.loading}
                     scroll={{
-                        y: 300
+                        y: 300,
+                        x: 300
                     }}
 
                     title={() =>

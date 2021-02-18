@@ -90,7 +90,7 @@
 }
 
 .available_search_web{
-    width: 10%;
+    width: 100px;
     height: 30px;
     border: none;
     color: white;
@@ -98,7 +98,7 @@
 }
 
 .unavailable_search_web{
-    width: 10%;
+    width: 100px;
     height: 30px;
     border: none;
     color: white;
@@ -116,4 +116,46 @@
 
 .ant-switch-checked {
     background-color: #020061;
+}
+
+@media only screen and (max-width: 400px) {
+    .title_header_web{
+        color: white;
+        position: absolute;
+        font-size: 40px;
+        width: 80%;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .text_header_web{
+        color: white;
+        position: absolute;
+        font-size: 20px;
+        width: 80%;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+    }
+
+    .card_web{
+        height: 380px;
+        margin-top: 40px;
+    }
+
+    .title_web_table{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .mongo_web{
+        display: flex;
+        margin-top: 20px;
+        width: 100%;
+    }
+
 }

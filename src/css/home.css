@@ -16,7 +16,6 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .text_header{
@@ -60,12 +59,18 @@
 }
 
 .site-card-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: auto;
     padding: 30px;
     margin-bottom: 40px;
 }
 
 .card_home{
-	height: 300px;
+	height: 350;
+    width: 350px;
+    margin-bottom: 20px;
 }
 
 .icon_home{
@@ -84,7 +89,6 @@
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
-    
 }
 
 .session_1_background{
@@ -96,4 +100,62 @@
 .text_sessao_1{
     color: rgb(43, 43, 43);
     font-size: 15px;
+}
+
+@media only screen and (max-width: 850px) {
+    [class="text_header"]{
+        color: white;
+        position: absolute;
+        font-size: 15px;
+        width: 80%;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    [class='button_header']{
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        height: 50px;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 10px 14px -7px #732727;
+        background:linear-gradient(to bottom, #7256a8 5%, #bd269a 100%);
+        background-color:#7256a8;
+        border-radius:42px;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:16px;
+        font-weight:bold;
+        padding:13px 32px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #dd00ff;
+        border: none;
+        outline: none;
+    }
+
+    [class='text_session_1']{
+        width: 80%;
+        color: rgb(43, 43, 43);
+        font-size: 15px;
+
+    }
+
+    [class='sessao_1']{
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+    }
+
+    [class="card_home"]{
+        height: 300px;
+        width: 350px;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        
+    }
 }
