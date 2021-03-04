@@ -90,9 +90,10 @@ export default class WebScraping extends Component {
                     if (Math.floor(resp.status / 100) === 2) {
                         console.log("Sector: ", resp.data)
                         if (resp.data != false) {
-                            const lista_sector = resp.data.replace("[", "").replace("]", "").replace(/ /g, '')
+                            const lista_sector = resp.data.replace("[", "").replace("]", "").replace(/ /g,'')
                             if (lista_sector.length > 2) {
                                 const lista_sector_final = resp.data.replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                console.log(">>>>>", lista_sector_final)
                                 this.setState({ sector_data: lista_sector_final })
                             }
                         }
@@ -111,6 +112,7 @@ export default class WebScraping extends Component {
                             const lista_lab = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "")
                             if (lista_lab.length > 2) {
                                 const lista_lab_final = resp.data.replace(/\s/g, '').replace("[", "").replace("]", "").replaceAll("'", "").split(",")
+                                console.log(">>>>>>>", lista_lab_final)
                                 this.setState({ golab_data: lista_lab_final })
                             }
                         }
@@ -218,7 +220,7 @@ export default class WebScraping extends Component {
             this.state.social == "select" &&
             this.state.sector == "select" &&
             this.state.golab == "select"
-        ) {
+          ) {
             var search = true
             var search_class = "unavailable_search_web"
         } else {
@@ -272,55 +274,57 @@ export default class WebScraping extends Component {
                 </div>
 
                 <div className="site-card-wrapper_web">
-                    <Card className="card_web" title={
-                        <div>
-                            <img src={social} className="icon_web" />
-                        </div>
+                    <Row gutter={16}>
+                        <Col span={6}>
+                            <Card className="card_web" title={
+                                <div>
+                                    <img src={social} className="icon_web" />
+                                </div>
 
-                    } bordered={true}>
-                        "We combine social and financial insight to help our
-                        partners make a difference to enduring problms - where
-                        the outcomes are poor and costs of failure are high"
+                            } bordered={true}>
+                                "We combine social and financial insight to help our
+                                partners make a difference to enduring problms - where
+                                the outcomes are poor and costs of failure are high"
                             </Card>
-                    <button disabled={this.state.loading} onClick={this.changeCheckSocial} className={social_class}>{this.state.social}</button>
-
-
-                    <Card className="card_web" title={
-                        <div>
-                            <img src={instiglio} className="icon_web" />
-                        </div>
-                    } bordered={true}>
-                        "Ensure that every cent spent to
-                        alleviate poverty has the greatest possible impact on the
-                        lives of the 2.4 billion men, women, and children afflicted
-                        by it."
+                            <button disabled={this.state.loading} onClick={this.changeCheckSocial} className={social_class}>{this.state.social}</button>
+                        </Col>
+                        <Col span={6}>
+                            <Card className="card_web" title={
+                                <div>
+                                    <img src={instiglio} className="icon_web" />
+                                </div>
+                            } bordered={true}>
+                                "Ensure that every cent spent to
+                                alleviate poverty has the greatest possible impact on the
+                                lives of the 2.4 billion men, women, and children afflicted
+                                by it."
                             </Card>
-                    <button disabled={this.state.loading} onClick={this.changeCheckInstiglio} className={instiglio_class}>{this.state.instiglio}</button>
-
-
-                    <Card className="card_web" title={
-                        <div>
-                            <img src={sector} className="icon_web" />
-                        </div>
-                    } bordered={true}>
-                        "Our mission is to accelerate the transition
-                        to a performance-driven social sector."
+                            <button disabled={this.state.loading} onClick={this.changeCheckInstiglio} className={instiglio_class}>{this.state.instiglio}</button>
+                        </Col>
+                        <Col span={6}>
+                            <Card className="card_web" title={
+                                <div>
+                                    <img src={sector} className="icon_web" />
+                                </div>
+                            } bordered={true}>
+                                "Our mission is to accelerate the transition
+                                to a performance-driven social sector."
                             </Card>
-                    <button disabled={this.state.loading} onClick={this.changeCheckSector} className={sector_class}>{this.state.sector}</button>
-
-
-                    <Card className="card_web" title={
-                        <div>
-                            <img src={golab} className="icon_web" />
-                        </div>
-                    } bordered={true}>
-                        "We host the global knowledge hub for those considering,
-                        designing and delivering new approaches to improve social
-                        outcomes."
+                            <button disabled={this.state.loading} onClick={this.changeCheckSector} className={sector_class}>{this.state.sector}</button>
+                        </Col>
+                        <Col span={6}>
+                            <Card className="card_web" title={
+                                <div>
+                                    <img src={golab} className="icon_web" />
+                                </div>
+                            } bordered={true}>
+                                "We host the global knowledge hub for those considering,
+                                designing and delivering new approaches to improve social
+                                outcomes."
                             </Card>
-                    <button disabled={this.state.loading} onClick={this.changeCheckLab} className={golab_class}>{this.state.golab}</button>
-
-
+                            <button disabled={this.state.loading} onClick={this.changeCheckLab} className={golab_class}>{this.state.golab}</button>
+                        </Col>
+                    </Row>
                 </div>
 
                 <Table

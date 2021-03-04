@@ -90,6 +90,8 @@ export default class MachineLearning extends Component {
 
                 } else {
 
+                    console.log("O PRINT: ", d)
+
                     var d_filtered = functionresumeImport(d)
 
                     this.setState({ data: d, data_filter: d_filtered, loading: "done", loading_icon: "done", step1: "finish" })
