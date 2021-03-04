@@ -11,12 +11,22 @@
 .menu_item{
     margin-left: 40px;
     font-size: 16px;
+    height: 40px;
+}
+
+.menu_item_selected{
+    margin-left: 40px;
+    font-size: 16px;
+    border-bottom:2px solid #ffffff;
+
+
 }
 
 #menu ul {
 	margin:0px;
 	margin-right: 20px;
 	list-style:none;
+
 }
 
 #menu ul li { display: inline; }
@@ -30,7 +40,7 @@
     text-decoration: none;
 }
 
-#menu ul li a:hover {
+.menu_item:hover {
     border-bottom:2px solid #ffffff;
 }
 

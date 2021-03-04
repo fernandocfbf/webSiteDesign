@@ -35,14 +35,23 @@ export default class Header extends Component {
             )
         }
 
+        var class_home = "menu_item"
+        var class_machine = "menu_item"
+        var class_web = "menu_item"
+        var class_about = "menu_item"
+
+        if (window.location.href.split('/')[3] == "home") { class_home = "menu_item_selected" }
+        else if (window.location.href.split('/')[3] == "machinelearning") { class_machine = "menu_item_selected" }
+        else if (window.location.href.split('/')[3] == "webscraping") { class_web = "menu_item_selected" }
+
         return (
             <div className="header">
                 <nav id="menu">
                     <ul>
-                        <li className="menu_item"><a href={url + '/home'} className="header_button">Home</a></li>
-                        <li className="menu_item"><a href={url + '/machinelearning'} className="header_button">Artificial Intelligence</a></li>
-                        <li className="menu_item"><a href={url + '/webscraping'} className="header_button">Web Scraping</a></li>
-                        <li className="menu_item"><a className="header_button">About</a></li>
+                        <li className={class_home}><a href={url + '/home'} className="header_button">Home</a></li>
+                        <li className={class_machine}><a href={url + '/machinelearning'} className="header_button">Artificial Intelligence</a></li>
+                        <li className={class_web}><a href={url + '/webscraping'} className="header_button">Web Scraping</a></li>
+                        <li className={class_about}><a className="header_button">About</a></li>
                     </ul>
                 </nav>
             </div>
